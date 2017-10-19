@@ -39,7 +39,7 @@ module.exports = function(app) {
     const sequelize = new Sequelize("tractor", "postgres", "rmtmsmt@", {
       operatorsAliases: { $and: Op.and },
       host: "localhost",
-      port: 5432, //54300
+      port: 54300, //5432
         dialect: "postgres",
 
         pool: {

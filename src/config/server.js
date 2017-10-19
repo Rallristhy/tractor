@@ -33,7 +33,12 @@ const io = require('socket.io')(http);
 const socket = require("../socket/socket")(io);
 
 /* Importando rotas e enviando para rotas app como parâmetro */
-const routes = require("../routes/routes")(app);
+const routes = require("../routes/routes");
+routes(app); //OR const routes = require("../routes/routes")(app);
+
+//const Usuario = app.datasource.models.Usuario;
+const UsuarioRouter = require("../routes/usuario");
+UsuarioRouter(app);
 
 /* Logs - puxa informações por POST HTML */
 const logger = require("morgan");

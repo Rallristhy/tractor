@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 
 module.exports = function(sequelize, DataType) { //DataType é o Sequelize original
 
@@ -12,6 +13,7 @@ module.exports = function(sequelize, DataType) { //DataType é o Sequelize origi
     /* Propriedades */
     createdAt: "createdAt", // OR false
     updatedAt: "updatedAt" // OR false
+
   });
 
   return Usuario;
