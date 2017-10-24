@@ -63,9 +63,9 @@ class UsuarioController {
 		return this.Usuario.update(data, {where: params})
 			.then(function(result){
 				return defaultResponse(result);
-			})
+	 		})
 			.catch(function(err){
-				return errorResponse(error.message, HttpStatus.UNPROCESSABLE_ENTITY);
+				returnerrorResponse(error.message, HttpStatus.UNPROCESSABLE_ENTITY);
 		});
 	}
 
