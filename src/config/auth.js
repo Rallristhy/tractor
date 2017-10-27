@@ -2,7 +2,7 @@
  * Estratégia json web token, extração de token vindas por request 
  */
 const passport = require("passport");
-const { Strategy, ExtractJwt } = require "passport-jwt"
+const { Strategy, ExtractJwt } = require("passport-jwt");
 
 /* 
  * Garante que a encriptação será única para essa aplicação 
@@ -23,26 +23,40 @@ module.exports = function(app) {
 	opts.secretOrKey = jwtSecret;
 
 	/* Extrai o token que o usuário envia */
-	opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
+	opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 
 	/* 
 	 * Definir estratégia de autenticação
+	 * recebe o payload com id do usuário
 	 */
 	const strategy = new Strategy(opts, (payload, done) => {
 		Usuario.findById(payload.id)
-			.then(function(usu){ 
+			.then(usu => {
 
+				/* Se achar o usuário retorna o id e e-mail */
 				if(usu) {
 					return done(null, {
 						id: usu.id,
 						email: usu.email
 					});
 				}
+				else {
+					return done(null, false);
+				}
 
 				
 			})
+			.catch(error => done(error, null));
 
 	});
 
+	passport.use(strategy);
 
+	return {
+
+		/* Inicializa o passport */
+		initialize: () => passport.initialize(),
+		/* Autentica os usuários */
+		authenticate: () => passport.authenticate("jwt", jwtSecret)
+	}
 }

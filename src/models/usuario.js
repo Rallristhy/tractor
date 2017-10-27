@@ -16,28 +16,23 @@ module.exports = function(sequelize, DataType) { //DataType é o Sequelize origi
 
     hooks: {
       /* Antes de criar um usuário encripta a senha */
-      beforeValidate: (usu, options) => {
+      beforeCreate: usu => {
 
         console.log("Aqui é antes da criação!..."+ usu.senha);
 
         /* Gera um salt(chave derivada de hash) */
-        const salt = bcrypt.genSaltSync()
+        const salt = bcrypt.genSaltSync();
 
         /* Seta a senha encriptada ao campo password */
         usu.set("senha", bcrypt.hashSync(usu.senha, salt));
 
-      },
-      afterValidate: (usu, options) => {
-        console.log("Aqui é depois da criação!..."+ usu.senha);
       }
     },
 
     /* Métodos pertencentes ao usuário */
     classMethods: {
       /* Compara a senha digitada com a gravada encriptada no banco */
-      verificaSenha: (encodedPassword, password) =>  {
-        bcrypt.compareSync(password, encodedPassword)
-      }
+      verificaSenha: (encodedPassword, password) => bcrypt.compareSync(password, encodedPassword)
     }
 
   });
