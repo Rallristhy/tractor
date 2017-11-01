@@ -29,14 +29,15 @@ module.exports = function(sequelize, DataType) { //DataType é o Sequelize origi
       }
     },
 
-    /* Métodos pertencentes ao usuário */
-    classMethods: {
-      /* Compara a senha digitada com a gravada encriptada no banco */
-      verificaSenha: (encodedPassword, password) => bcrypt.compareSync(password, encodedPassword)
-    }
-
   });
 
+  /* 
+   * Compara a senha digitada com a gravada encriptada no banco
+   */
+  Usuario.verificaSenha = function(encodedPassword, password) {
+    return bcrypt.compareSync(password, encodedPassword);
+  };
+  
   return Usuario;
 
 };

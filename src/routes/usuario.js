@@ -5,16 +5,29 @@ module.exports = function(app) {
 	/* Instanciando um usuário */
 	const usuarioController = new UsuarioController(app.datasource.models.usuario);	
 
-	app.get('/usuario', function (request, response) {
-
+	app.route('/usuario')
+		/* Todas as rotas teram que autenticar */
+		.all(app.auth.authenticate())
+		.get(function (request, response) {
 		usuarioController.getAll()
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
-			})
+			});
 			
+		})
+		.post(function (request, response) {
 
-	});
+			usuarioController.create(request.body)
+				.then(function(result){
+					response.status(result.statusCode);
+					response.json(result.data);
+				})
+				.catch(function(err){
+					errorResponse(error.message, 422);
+			});
+
+		});
 
 	app.get('/usuario/:id', function (request, response) {
 
@@ -29,7 +42,7 @@ module.exports = function(app) {
 
 	});
 
-	app.post('/usuario', function (request, response) {
+	/*app.post('/usuario', function (request, response) {
 
 		usuarioController.create(request.body)
 			.then(function(result){
@@ -40,7 +53,7 @@ module.exports = function(app) {
 				errorResponse(error.message, 422);
 		});
 
-	});
+	});*/
 
 	app.put('/usuario/:id', function (request, response) {
 

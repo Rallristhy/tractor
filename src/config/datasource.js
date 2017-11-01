@@ -31,7 +31,7 @@ const loadmodels = function(sequelize){
 module.exports = function(app) {
   
   /* 
-   * Verifica se já existe 
+   * Verifica se já existe, se não existir conexão com o banco, cria
    * Singleton garante a instancia do banco de dados apenas uma vez
    */
   if(!database){

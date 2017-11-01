@@ -18,14 +18,11 @@ module.exports = function(app) {
 
 	  		usuario.findOne({where: { email }})
 	  			.then(usu => {
-	  				
-	  				x = bcrypt.compareSync(senha, usu.senha);
-	  				console.log("KKKKKKKKKKKKKKKKKKKKKKKKKK"+x);
 
-	  				if(x) {
+	  				if(usuario.verificaSenha(usu.senha, senha)) {
 	  					
 	  					const payload = { id: usu.id };
-	  					console.log("Entrei aqui no token 2!!!!"+payload);
+
 	  					response.json({
 	  						token: jwt.encode(payload, jwtSecret)
 	  					});
@@ -38,7 +35,6 @@ module.exports = function(app) {
 
 	  	}
 	  	else {
-
 	  		response.sendStatus(HttpStatus.UNAUTHORIZED);
 	  	}
 	});

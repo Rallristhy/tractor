@@ -4,13 +4,6 @@
 const passport = require("passport");
 const { Strategy, ExtractJwt } = require("passport-jwt");
 
-/* 
- * Garante que a encriptação será única para essa aplicação 
- * Concatena esse secret e gera uma senha única
- */
-jwtSecret = "R411risthy";
-jwtSession = { session:false };
-
 module.exports = function(app) {
 
 	/* Import de usuário */
@@ -18,6 +11,13 @@ module.exports = function(app) {
 
 	/* Options */
 	const opts = {};
+
+	/* 
+	 * Garante que a encriptação será única para essa aplicação 
+	 * Concatena esse secret e gera uma senha única
+	 */
+	jwtSecret = "R411risthy";
+	jwtSession = { session:false };
 
 	/* Secret do passport recebe secret criado */
 	opts.secretOrKey = jwtSecret;
@@ -30,23 +30,23 @@ module.exports = function(app) {
 	 * recebe o payload com id do usuário
 	 */
 	const strategy = new Strategy(opts, (payload, done) => {
+
 		Usuario.findById(payload.id)
 			.then(usu => {
 
 				/* Se achar o usuário retorna o id e e-mail */
 				if(usu) {
+					console.log("Olá");
 					return done(null, {
 						id: usu.id,
 						email: usu.email
 					});
 				}
-				else {
-					return done(null, false);
-				}
-
 				
+				return done(null, false);
+
 			})
-			.catch(error => done(error, null));
+			//.catch(error => done(error, null));
 
 	});
 
@@ -57,6 +57,6 @@ module.exports = function(app) {
 		/* Inicializa o passport */
 		initialize: () => passport.initialize(),
 		/* Autentica os usuários */
-		authenticate: () => passport.authenticate("jwt", jwtSecret)
-	}
-}
+		authenticate: () => passport.authenticate("jwt", jwtSession)
+	};
+};
