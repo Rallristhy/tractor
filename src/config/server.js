@@ -36,13 +36,16 @@ app.use(bodyParser.json());
 /* 
  * Import Rotas
  */
- const routes = require("../routes/routes");
- const cidadeRouter = require("../routes/route_cidades");
- routes(app);
+const routes = require("../routes/routes");
+const cidadeRouter = require("../routes/route_cidades");
+const estadoRouter = require("../routes/route_estados");
+const oficinaRouter = require("../routes/route_oficina");
+const usuarioRouter = require("../routes/route_usuario");
+routes(app);
 
- /* 
- * Importando sockets
- */
+/* 
+* Importando sockets
+*/
 const socket = require("../sockets/sockets")(io);
 
 /* 
@@ -57,6 +60,9 @@ app.datasource = datasource(app);
 
 routes(app);
 cidadeRouter(app);
+estadoRouter(app);
+oficinaRouter(app);
+usuarioRouter(app);
 
 /* Iniciando server */
 http.listen(port, function () {

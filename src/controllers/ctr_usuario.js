@@ -11,15 +11,15 @@ const errorResponse = (message, statusCode = HttpStatus.BAD_REQUEST) => defaultR
   error: message,
 }, statusCode);
 
-class CidadeController {
+class UsuarioController {
 
-	constructor(Cidade){
-		this.Cidade = Cidade;
+	constructor(Usuario){
+		this.Usuario = Usuario;
 	}
 
 	getAll(){
 
-		return this.Cidade.findAll({})
+		return this.Usuario.findAll({})
 			.then(function(result){ 
 				return defaultResponse(result, HttpStatus.OK);
 			})
@@ -30,7 +30,7 @@ class CidadeController {
 
 	getById(data){
 
-		return this.Cidade.findOne({where: data})
+		return this.Usuario.findOne({where: data})
 			.then(function(result){
 				return defaultResponse(result, HttpStatus.OK);
 			})
@@ -42,10 +42,10 @@ class CidadeController {
 	create(data){
 
 		/* 
-		 * INSERT INTO Cidade 
+		 * INSERT INTO Usuario 
 		 * request.body vinda da view
 		 */
-		return this.Cidade.create(data)
+		return this.Usuario.create(data)
 			.then(function(result){
 				return defaultResponse(result, HttpStatus.CREATED);
 			})
@@ -57,11 +57,11 @@ class CidadeController {
 	update(data, params){
 
 		/* 
-		 * UPDATE Cidade 
+		 * UPDATE Usuario 
 		 * request.body id vindo da view
 		 * { where: request.params } vindas da view
 		 */
-		return this.Cidade.update(data, {where: params})
+		return this.Usuario.update(data, {where: params})
 			.then(function(result){
 				return defaultResponse(result);
 	 		})
@@ -72,7 +72,7 @@ class CidadeController {
 
 	delete(data){
 
-		return this.Cidade.destroy({where: data})
+		return this.Usuario.destroy({where: data})
 			.then(function(result){
 				return defaultResponse(result, HttpStatus.NO_CONTENT);
 			})
@@ -83,4 +83,4 @@ class CidadeController {
 
 }
 
-module.exports = CidadeController;
+module.exports = UsuarioController;
