@@ -1,5 +1,8 @@
 'use strict';
 
+/*
+ * Funções para tratar o status e erros
+ */
 const HttpStatus = require("http-status");
 
 const defaultResponse = (data, statusCode = HttpStatus.OK) => ({
@@ -11,15 +14,21 @@ const errorResponse = (message, statusCode = HttpStatus.BAD_REQUEST) => defaultR
   error: message,
 }, statusCode);
 
-class CidadeController {
+/*
+ * Classe genérica Controller
+ */
+class Controller {
 
-	constructor(Cidade){
-		this.Cidade = Cidade;
+	constructor(T){
+		this.T = T;
 	}
 
+	/*
+	 * SELECT * FROM table
+	 */
 	getAll(){
 
-		return this.Cidade.findAll({})
+		return this.T.findAll({})
 			.then(function(result){ 
 				return defaultResponse(result, HttpStatus.OK);
 			})
@@ -28,9 +37,12 @@ class CidadeController {
 			})
 	}
 
+	/*
+	 * SELECT * FROM table WHERE id = ?
+	 */
 	getById(data){
 
-		return this.Cidade.findOne({where: data})
+		return this.T.findOne({where: data})
 			.then(function(result){
 				return defaultResponse(result, HttpStatus.OK);
 			})
@@ -39,13 +51,13 @@ class CidadeController {
 		});
 	}
 
+	/*
+	 * INSERT INTO table
+	 * request.body vinda da view
+	 */
 	create(data){
 
-		/* 
-		 * INSERT INTO Cidade 
-		 * request.body vinda da view
-		 */
-		return this.Cidade.create(data)
+		return this.T.create(data)
 			.then(function(result){
 				return defaultResponse(result, HttpStatus.CREATED);
 			})
@@ -54,14 +66,13 @@ class CidadeController {
 		});
 	}
 
+	/*
+	 * UPDATE table
+	 * request.body e where: request.params vinda da view
+	 */
 	update(data, params){
 
-		/* 
-		 * UPDATE Cidade 
-		 * request.body id vindo da view
-		 * { where: request.params } vindas da view
-		 */
-		return this.Cidade.update(data, {where: params})
+		return this.T.update(data, {where: params})
 			.then(function(result){
 				return defaultResponse(result);
 	 		})
@@ -70,9 +81,12 @@ class CidadeController {
 		});
 	}
 
+	/*
+	 * DELETE FROM table WHERE id = ?
+	 */
 	delete(data){
 
-		return this.Cidade.destroy({where: data})
+		return this.T.destroy({where: data})
 			.then(function(result){
 				return defaultResponse(result, HttpStatus.NO_CONTENT);
 			})
@@ -83,4 +97,4 @@ class CidadeController {
 
 }
 
-module.exports = CidadeController;
+module.exports = Controller;

@@ -2,9 +2,11 @@
 
 module.exports = function(sequelize, DataType) {
 
-	const Oficina = sequelize.define("oficina", {
-	    id_oficina: { type: DataType.INTEGER, primaryKey: true, autoIncrement: true },
-	    raz_social: { type: DataType.STRING(64), allowNull: false },
+	const Cliente = sequelize.define("cliente", {
+	    id_cliente: { type: DataType.INTEGER, primaryKey: true, autoIncrement: true },
+	    tipo_cliente: { type: DataType.CHAR(1), allowNull: false },
+	    cpf_cnpj: { type: DataType.STRING(32), allowNull: false },
+	    nome_raz_social: { type: DataType.STRING(64), allowNull: false },
 	    endereco: { type: DataType.STRING(128), allowNull: false },
 	    numero: { type: DataType.INTEGER, allowNull: false },
 	    bairro: { type: DataType.STRING(32), allowNull: false },
@@ -16,8 +18,8 @@ module.exports = function(sequelize, DataType) {
 		   type: DataType.INTEGER,
 
 		   references: {
-		     model: "cidades",
-		     key: "id_cidade",
+		     model: 'cidades',
+		     key: 'id_cidade',
 		     deferrable: sequelize.Deferrable.INITIALLY_IMMEDIATE
 		   },
 		   onDelete: "cascade",
@@ -28,8 +30,8 @@ module.exports = function(sequelize, DataType) {
 	    /* Propriedades */
 	    createdAt: "createdAt",
 	    updatedAt: "updatedAt",
-      	tableName: "oficina"
+      	tableName: "cliente"
 	});
 
-	return Oficina;
+	return Cliente;
 };	

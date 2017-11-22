@@ -1,10 +1,8 @@
 'use strict';
 
-const UsuarioController = require("../controllers/ctr_usuario");
-
 module.exports = function(app) {
 
-	const usuarioController = new UsuarioController(app.datasource.models.usuario);	
+	const usuarioController = new app.Controller(app.datasource.models.usuario);	
 
 	app.get('/usuario', function (request, response) {
 

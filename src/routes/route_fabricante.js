@@ -2,11 +2,11 @@
 
 module.exports = function(app) {
 
-	const estadoController = new app.Controller(app.datasource.models.estados);	
+	const fabricanteController = new app.Controller(app.datasource.models.fabricante);	
 
-	app.get('/estados', function (request, response) {
+	app.get('/fabricante', function (request, response) {
 
-		estadoController.getAll()
+		fabricanteController.getAll()
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
@@ -14,9 +14,9 @@ module.exports = function(app) {
 
 	});
 
-	app.post('/estados', function (request, response) {
+	app.post('/fabricante', function (request, response) {
 
-		estadoController.create(request.body)
+		fabricanteController.create(request.body)
 				.then(function(result){
 					response.status(result.statusCode);
 					response.json(result.data);
@@ -27,9 +27,9 @@ module.exports = function(app) {
 
 	});
 
-	app.get('/estados/:id_estado', function (request, response) {
+	app.get('/fabricante/:id_fabricante', function (request, response) {
 
-		estadoController.getById(request.params)
+		fabricanteController.getById(request.params)
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
@@ -40,9 +40,9 @@ module.exports = function(app) {
 
 	});
 
-	app.put('/estados/:id_estado', function (request, response) {
+	app.put('/fabricante/:id_fabricante', function (request, response) {
 
-		estadoController.update(request.body, request.params)
+		fabricanteController.update(request.body, request.params)
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
@@ -54,9 +54,9 @@ module.exports = function(app) {
 
 	});
 
-	app.delete('/estados/:id_estado', function (request, response) {
+	app.delete('/fabricante/:id_fabricante', function (request, response) {
 
-		estadoController.delete(request.params)
+		fabricanteController.delete(request.params)
 			.then(function(result){
 				response.sendStatus(result.statusCode);
 			});

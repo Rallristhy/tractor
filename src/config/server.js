@@ -34,6 +34,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 /* 
+ * Import controller genérica e cria uma variável para ser utilizada pelos módulos
+ */
+app.Controller = require("../controllers/controller");
+
+/* 
  * Import Rotas
  */
 const routes = require("../routes/routes");
@@ -41,6 +46,9 @@ const cidadeRouter = require("../routes/route_cidades");
 const estadoRouter = require("../routes/route_estados");
 const oficinaRouter = require("../routes/route_oficina");
 const usuarioRouter = require("../routes/route_usuario");
+const mecanicoRouter = require("../routes/route_mecanico");
+const clienteRouter = require("../routes/route_cliente");
+const fabricanteRouter = require("../routes/route_fabricante");
 routes(app);
 
 /* 
@@ -57,12 +65,14 @@ app.datasource = datasource(app);
 /* 
  * Envia app como parâmetros para os outros módulos 
  */
-
 routes(app);
 cidadeRouter(app);
 estadoRouter(app);
 oficinaRouter(app);
 usuarioRouter(app);
+mecanicoRouter(app);
+clienteRouter(app);
+fabricanteRouter(app);
 
 /* Iniciando server */
 http.listen(port, function () {

@@ -2,11 +2,11 @@
 
 module.exports = function(app) {
 
-	const oficinaController = new app.Controller(app.datasource.models.oficina);	
+	const clienteController = new app.Controller(app.datasource.models.cliente);	
 
-	app.get('/oficina', function (request, response) {
+	app.get('/cliente', function (request, response) {
 
-		oficinaController.getAll()
+		clienteController.getAll()
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
@@ -14,9 +14,9 @@ module.exports = function(app) {
 
 	});
 
-	app.post('/oficina', function (request, response) {
+	app.post('/cliente', function (request, response) {
 
-		oficinaController.create(request.body)
+		clienteController.create(request.body)
 				.then(function(result){
 					response.status(result.statusCode);
 					response.json(result.data);
@@ -27,9 +27,9 @@ module.exports = function(app) {
 
 	});
 
-	app.get('/oficina/:id_oficina', function (request, response) {
+	app.get('/cliente/:id_cliente', function (request, response) {
 
-		oficinaController.getById(request.params)
+		clienteController.getById(request.params)
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
@@ -40,9 +40,9 @@ module.exports = function(app) {
 
 	});
 
-	app.put('/oficina/:id_oficina', function (request, response) {
+	app.put('/cliente/:id_cliente', function (request, response) {
 
-		oficinaController.update(request.body, request.params)
+		clienteController.update(request.body, request.params)
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
@@ -54,9 +54,9 @@ module.exports = function(app) {
 
 	});
 
-	app.delete('/oficina/:id_oficina', function (request, response) {
+	app.delete('/cliente/:id_cliente', function (request, response) {
 
-		oficinaController.delete(request.params)
+		clienteController.delete(request.params)
 			.then(function(result){
 				response.sendStatus(result.statusCode);
 			});

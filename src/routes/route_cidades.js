@@ -1,10 +1,8 @@
 'use strict';
 
-const CidadeController = require("../controllers/ctr_cidades");
-
 module.exports = function(app) {
 
-	const cidadeController = new CidadeController(app.datasource.models.cidades);	
+	const cidadeController = new app.Controller(app.datasource.models.cidades);	
 
 	app.get('/cidades', function (request, response) {
 
