@@ -174,7 +174,7 @@
   <table id="TAB49" populated="true" UUID="026ed1ca-943b-4600-8da9-7413bfa8558b" name="ordem_servico" objectType="TABLE" physicalName="ordem_servico" >
    <remarks></remarks>
    <folder id="FOLTAB491" populated="true" name="Columns" physicalName="Columns" type="1">
-    <column id="COL50" populated="true" UUID="69552eca-6ebf-47be-905c-8265e7cd24cd" autoIncrement="true" autoIncrementSequenceName="ordem_servico_seq" defaultValue="" name="id_ordem_servico" nullable="0" physicalName="id_ordem_servico" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL50" populated="true" UUID="69552eca-6ebf-47be-905c-8265e7cd24cd" autoIncrement="true" autoIncrementSequenceName="os_seq" defaultValue="" name="id_os" nullable="0" physicalName="id_os" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL51" populated="true" UUID="59180723-c2c8-4da4-b321-79e0f0bea02e" autoIncrement="false" autoIncrementSequenceName="cliente_seq_1" defaultValue="" name="id_cliente" nullable="0" physicalName="id_cliente" precision="0" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -211,7 +211,7 @@
     </folder>
     <folder id="FOLTAB494" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX60" populated="true" UUID="92cc7a03-7588-4c80-8b76-b5b12c3836af" clustered="false" name="ordem_servico_pk" physicalName="ordem_servico_pk" primaryKeyIndex="true" unique="false" >
-     <index-column id="IDC61" populated="true" UUID="35658b4d-e479-4fcf-89db-9df835a2b7db" ascendingOrDescending="UNSPECIFIED" column-ref="COL50" name="id_ordem_servico" physicalName="id_ordem_servico" />
+     <index-column id="IDC61" populated="true" UUID="35658b4d-e479-4fcf-89db-9df835a2b7db" ascendingOrDescending="UNSPECIFIED" column-ref="COL50" name="id_os" physicalName="id_os" />
      <index-column id="IDC62" populated="true" UUID="a7a2cbb5-1121-4737-9a47-1f1a0ee3f9c4" ascendingOrDescending="UNSPECIFIED" column-ref="COL51" name="id_cliente" physicalName="id_cliente" />
      <index-column id="IDC63" populated="true" UUID="f423d58b-cfe6-446a-86f6-cb0a7799d912" ascendingOrDescending="UNSPECIFIED" column-ref="COL52" name="id_veiculo" physicalName="id_veiculo" />
      <index-column id="IDC64" populated="true" UUID="28106885-cdf0-4fdd-98fa-61bebf57f7da" ascendingOrDescending="UNSPECIFIED" column-ref="COL53" name="id_usuario" physicalName="id_usuario" />
@@ -355,7 +355,7 @@
     <column id="COL105" populated="true" UUID="4f05bb8f-b2c2-428c-8cec-6f1236aa542b" autoIncrement="true" autoIncrementSequenceName="servico_os_seq" defaultValue="" name="id_servico_os" nullable="0" physicalName="id_servico_os" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL106" populated="true" UUID="e3e1a275-a202-476a-b56a-34c24fd7fd19" autoIncrement="false" autoIncrementSequenceName="ordem_servico_seq_1" defaultValue="" name="id_ordem_servico" nullable="0" physicalName="id_ordem_servico" precision="0" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL106" populated="true" UUID="e3e1a275-a202-476a-b56a-34c24fd7fd19" autoIncrement="false" autoIncrementSequenceName="ordem_servico_seq_1" defaultValue="" name="id_os" nullable="0" physicalName="id_os" precision="0" primaryKeySeq="1" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
     <column id="COL107" populated="true" UUID="6a7d5cd4-3e96-43ca-afb5-e96715892d00" autoIncrement="false" autoIncrementSequenceName="servico_seq_1" defaultValue="" name="id_servico" nullable="0" physicalName="id_servico" precision="0" primaryKeySeq="2" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
@@ -375,7 +375,7 @@
     <folder id="FOLTAB1044" populated="true" name="Indices" physicalName="Indices" type="4">
     <index id="IDX110" populated="true" UUID="c596a961-329c-4cbf-8d74-a0dacce39123" clustered="false" name="servico_os_pk" physicalName="servico_os_pk" primaryKeyIndex="true" unique="false" >
      <index-column id="IDC111" populated="true" UUID="ab6925bb-9433-4e78-9eb7-d2bd6a0cda2b" ascendingOrDescending="UNSPECIFIED" column-ref="COL105" name="id_servico_os" physicalName="id_servico_os" />
-     <index-column id="IDC112" populated="true" UUID="7c5f7ca1-d22a-4dea-97d7-a83f9d9ccffd" ascendingOrDescending="UNSPECIFIED" column-ref="COL106" name="id_ordem_servico" physicalName="id_ordem_servico" />
+     <index-column id="IDC112" populated="true" UUID="7c5f7ca1-d22a-4dea-97d7-a83f9d9ccffd" ascendingOrDescending="UNSPECIFIED" column-ref="COL106" name="id_os" physicalName="id_os" />
      <index-column id="IDC113" populated="true" UUID="b9dc3fd7-a8c4-4c95-86c1-406b1ab9640d" ascendingOrDescending="UNSPECIFIED" column-ref="COL107" name="id_servico" physicalName="id_servico" />
     </index>
    </folder>
@@ -419,10 +419,10 @@
    </relationship>
   </relationships>
  </target-database>
- <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="false" target-schema="public"> </ddl-generator>
+ <ddl-generator type="ca.sqlpower.architect.ddl.PostgresDDLGenerator" allow-connection="true" target-schema="public"> </ddl-generator>
  <liquibase-settings useSeparateChangeSets="false" generateId="false" idStart="1"/>
  <create-kettle-job-settings filePath="" jobName="" schemaName="" kettleJoinType="0" savingToFile="true" />
- <play-pen zoom="0.8408964152537145" viewportX="0" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
+ <play-pen zoom="0.8408964152537145" viewportX="11" viewportY="0" relationship-style="rectilinear" names-displayLogicalNames="true" showPrimaryTag="true" showForeignTag="true" showAlternateTag="true" columnVisibility="ALL" relationshipLabelVisibility="true">
   <table-pane table-ref="TAB1" x="466" y="470" bgColor="0xbfd6ff" fgColor="0x000000" rounded="true" dashed="false"/>
   <table-pane table-ref="TAB10" x="44" y="71" bgColor="0xbfd6ff" fgColor="0x000000" rounded="true" dashed="false"/>
   <table-pane table-ref="TAB23" x="470" y="20" bgColor="0xbfd6ff" fgColor="0x000000" rounded="true" dashed="false"/>

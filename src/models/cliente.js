@@ -22,6 +22,7 @@ module.exports = function(sequelize, DataType) {
 		     key: 'id_cidade',
 		     deferrable: sequelize.Deferrable.INITIALLY_IMMEDIATE
 		   },
+		   allowNull: false,
 		   onDelete: "cascade",
 		   onUpdate: "cascade"
 		},

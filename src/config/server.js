@@ -49,6 +49,10 @@ const usuarioRouter = require("../routes/route_usuario");
 const mecanicoRouter = require("../routes/route_mecanico");
 const clienteRouter = require("../routes/route_cliente");
 const fabricanteRouter = require("../routes/route_fabricante");
+const veiculoRouter = require("../routes/route_veiculo");
+const servicoRouter = require("../routes/route_servicos");
+const ordemServicoRouter = require("../routes/route_os");
+const ServicosOrdemServicoRouter = require("../routes/route_servicos_os");
 routes(app);
 
 /* 
@@ -73,6 +77,10 @@ usuarioRouter(app);
 mecanicoRouter(app);
 clienteRouter(app);
 fabricanteRouter(app);
+veiculoRouter(app);
+servicoRouter(app);
+ordemServicoRouter(app);
+ServicosOrdemServicoRouter(app);
 
 /* Iniciando server */
 http.listen(port, function () {

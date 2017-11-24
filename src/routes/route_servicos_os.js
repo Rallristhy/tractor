@@ -2,11 +2,11 @@
 
 module.exports = function(app) {
 
-	const oficinaController = new app.Controller(app.datasource.models.oficina);	
+	const ServicosOsController = new app.Controller(app.datasource.models.servicos_os);	
 
-	app.get('/oficina', function (request, response) {
+	app.get('/servicos_os', function (request, response) {
 
-		oficinaController.getAll()
+		ServicosOsController.getAll()
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
@@ -17,9 +17,9 @@ module.exports = function(app) {
 
 	});
 
-	app.post('/oficina', function (request, response) {
+	app.post('/servicos_os', function (request, response) {
 
-		oficinaController.create(request.body)
+		ServicosOsController.create(request.body)
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
@@ -30,9 +30,9 @@ module.exports = function(app) {
 
 	});
 
-	app.get('/oficina/:id_oficina', function (request, response) {
+	app.get('/servicos_os/:id_servico_os', function (request, response) {
 
-		oficinaController.getById(request.params)
+		ServicosOsController.getById(request.params)
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
@@ -43,9 +43,9 @@ module.exports = function(app) {
 
 	});
 
-	app.put('/oficina/:id_oficina', function (request, response) {
+	app.put('/servicos_os/:id_servico_os', function (request, response) {
 
-		oficinaController.update(request.body, request.params)
+		ServicosOsController.update(request.body, request.params)
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
@@ -57,14 +57,11 @@ module.exports = function(app) {
 
 	});
 
-	app.delete('/oficina/:id_oficina', function (request, response) {
+	app.delete('/servicos_os/:id_servico_os', function (request, response) {
 
-		oficinaController.delete(request.params)
+		ServicosOsController.delete(request.params)
 			.then(function(result){
 				response.sendStatus(result.statusCode);
-			})
-			.catch(function(error){
-				errorResponse(error.message, result.statusCode);
 			});
 
 	});

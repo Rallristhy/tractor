@@ -10,20 +10,23 @@ module.exports = function(app) {
 			.then(function(result){
 				response.status(result.statusCode);
 				response.json(result.data);
-		});
+			})
+			.catch(function(error){
+				errorResponse(error.message, result.statusCode);
+			});
 
 	});
 
 	app.post('/cliente', function (request, response) {
 
 		clienteController.create(request.body)
-				.then(function(result){
-					response.status(result.statusCode);
-					response.json(result.data);
-				})
-				.catch(function(err){
-					errorResponse(error.message, result.statusCode);
-		});
+			.then(function(result){
+				response.status(result.statusCode);
+				response.json(result.data);
+			})
+			.catch(function(error){
+				errorResponse(error.message, result.statusCode);
+			});
 
 	});
 
@@ -34,9 +37,9 @@ module.exports = function(app) {
 				response.status(result.statusCode);
 				response.json(result.data);
 			})
-			.catch(function(err){
-				errorResponse(error.message, 402);
-		});
+			.catch(function(error){
+				errorResponse(error.message, result.statusCode);
+			});
 
 	});
 
@@ -47,9 +50,9 @@ module.exports = function(app) {
 				response.status(result.statusCode);
 				response.json(result.data);
 			})
-			.catch(function(err){
-				errorResponse(error.message, 422);
-		});
+			.catch(function(error){
+				errorResponse(error.message, result.statusCode);
+			});
 
 
 	});
@@ -59,6 +62,9 @@ module.exports = function(app) {
 		clienteController.delete(request.params)
 			.then(function(result){
 				response.sendStatus(result.statusCode);
+			})
+			.catch(function(error){
+				errorResponse(error.message, result.statusCode);
 			});
 
 	});
